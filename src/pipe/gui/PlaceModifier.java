@@ -50,6 +50,7 @@ public class PlaceModifier extends JPanel {
 	private JCheckBox chckbxShowAttributes;
 	private JLabel lblPlaceHeaderName;
 	private JLabel lblTokenHeaderName;
+	private boolean isNewText;
 	  //Place place;
 	  Boolean attributesVisible;
 	  String name;
@@ -281,6 +282,45 @@ public class PlaceModifier extends JPanel {
 	      });
 	    
 
+	    txtNewTokens.addFocusListener(new FocusListener() {
+	        public void focusGained(FocusEvent e) {
+	          if(!isNewText)
+	          {
+	        	  txtNewTokens.setText("");
+	          }
+	        }
+
+	        public void focusLost(FocusEvent e) {
+	        	try {
+	        		// If user has typed something
+	        		if(!txtNewTokens.getText().equals(""))
+	        		{
+	        			isNewText = false;
+	        		}
+	        		
+	        		
+	        		if(!isNewText)
+	        		{
+	        			txtNewTokens.setText(getNewTokenPlaceHolderText());
+	        		}
+	        	}catch (Exception ex)
+	        	{
+	        		System.out.println("Invalid Selection in one of the Place Editor components");
+	        	}
+	          
+	        }
+
+//	        void displayMessage(String prefix, FocusEvent e) {
+//	          System.out.println(prefix
+//	              + (e.isTemporary() ? " (temporary):" : ":")
+//	              + e.getComponent().getClass().getName()
+//	              + "; Opposite component: "
+//	              + (e.getOppositeComponent() != null ? e.getOppositeComponent().getClass().getName()
+//	                  : "null"));
+//	        }
+
+	      });
+	    
 	}
 
 	/**
@@ -337,6 +377,10 @@ public class PlaceModifier extends JPanel {
 		
 	}
 	
+	
+	
+	
+	
 	private void setAttribute(JCheckBox aCheckBox)
 	{
 		originalAttribute = currentPlace.getAttributesVisible();
@@ -352,6 +396,10 @@ public class PlaceModifier extends JPanel {
 		    return "";
 		  }
 	  
+	  
+	  
+	  
+	  
 	  private void initializeTokens(DefaultListModel listModel)
 	  {
 		    if (currentPlace.getDataType() != null && currentPlace.getToken() != null) {
@@ -361,9 +409,18 @@ public class PlaceModifier extends JPanel {
 		      }
 	  }
 	  
+	  
+	  
+	  
+	  
 	  private void initType() {
 		    dml.addElement(String.format("T:%s", currentPlace.getDataType() == null ? "" : currentPlace.getDataType().getStringRepresentation()));
 		  }
+	  
+	  
+	  
+	  
+	  
 	  
 	  private void doOK() {
 
