@@ -925,6 +925,58 @@ public class GuiFrame extends JFrame implements ActionListener, Observer {
   }
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // CHECK DIS CODE OUT
   private void setAnimationMode(boolean on) {
     randomAnimateAction.setSelected(false);
     startAction.setSelected(on);
@@ -937,6 +989,11 @@ public class GuiFrame extends JFrame implements ActionListener, Observer {
       enableActions(false);//disables all non-animation buttons
       setEditionAllowed(false);
       statusBar.changeText(statusBar.textforAnimation);
+       
+       // CONTINUOUS ANIMATION PANEL //
+      ContinuousModifier modifier = new ContinuousModifier(new Animator(), CreateGui.currentPNMLData());
+      CreateGui.changeSUIEEditorPane(modifier);
+      
     }
     else {
       setEditionAllowed(true);
@@ -947,6 +1004,57 @@ public class GuiFrame extends JFrame implements ActionListener, Observer {
     }
   }
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   public void resetMode() {
     setMode(old_mode);
